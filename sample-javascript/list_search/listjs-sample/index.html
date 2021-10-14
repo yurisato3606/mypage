@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!-- ulのリスト先頭の「・」を非表示にする またリストを横に並べる -->
+  <link media="all" href="css/4listjs.css" type="text/css" rel="stylesheet">
+  <title>List.jsのサンプルページ</title>
+</head>
+<body class="container">
+  <h1>図書館関係本リストをキーワードで絞り込み</h1>
+  <br>
+  <h2>目録データのソースについて</h2>
+  このページで使っているサンプル図書リストは、国立情報学研究所の「NII総合目録データベース（NACSIS-CAT）」<a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">(CC-BYライセンス)</a>を元にしています。
+  <strong>「図書館」</strong>に関する書誌データを100件程度抜粋して使いました。
+  <br>
+  <!-- list.jsのブロック idはlist.jsの呼び出しに使う　HTML末尾のスクリプトで指定している -->
+  <div id="listdata">
+    <div class="form-group">
+      <label for="keyword">文字列をタイプ<span class="alert">※　NCIDと刊行年月日は絞り込み対象外</span></label>
+      <!-- classをsearchにし、list.jsの検索欄に -->
+      <input id="keyword" class="search form-control form-control-lg" placeholder="input any word" size="50" />
+    </div>
+    <!-- classをpaginationにし、list.jsのページネーションに -->
+    <div class="form-group">
+      <ul class="pagination list-inline"></ul>
+    </div>
+    <br>
+    <!--
+      図書リスト
+         <ul>のclassをlist.js指定の"list"にすることで処理が働く
+         classは任意設定　これによりlist.jsの絞り込み対象を指定 HTML末尾のスクリプトで指定している
+    -->
+    <ul class="list list-unstyled">
+      <li>
+      <dl>
+        <dt class="title">図書館ってどんなところ</dt>
+        <dd class="creator">紺野順子文 ; こばようこ絵</dd>
+        <dd class="publisher">アリス館</dd>
+        <dd class="ncid">BB0362253X</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2010.9</dd>
+        <dd class="note"></dd>
+      </dl>
+    </li>
+      <li>
+      <dl>
+        <dt class="title">図書館ハンドブック</dt>
+        <dd class="creator">日本図書館協会編</dd>
+        <dd class="publisher">日本図書館協会</dd>
+        <dd class="ncid">BN01881010</dd>
+        <dd class="edition">増訂版</dd>
+        <dd class="publicationDate">1960.7</dd>
+        <dd class="note">執筆者: 安藤金治ほか</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館活用学 : 本のある暮らし</dt>
+        <dd class="creator">森崎震二, 戸田あきら編著</dd>
+        <dd class="publisher">新日本出版社</dd>
+        <dd class="ncid">BN01008648</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1982.7</dd>
+        <dd class="note">参考資料:p217〜218</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館学・書誌学辞典</dt>
+        <dd class="creator">植村長三郎編著</dd>
+        <dd class="publisher">有隣堂</dd>
+        <dd class="ncid">BN01868646</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1967.10</dd>
+        <dd class="note">参考図書: piv</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">文献報国</dt>
+        <dd class="creator">朝鮮総督府図書館編</dd>
+        <dd class="publisher">私製</dd>
+        <dd class="ncid">BB08560440</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate"></dd>
+        <dd class="note">原本の出版者等: 朝鮮総督府図書館 昭和10年-19年刊</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">大学図書館司書主務者研修会報告書 : 各種研修会報告書</dt>
+        <dd class="creator">日本私立大学協会編</dd>
+        <dd class="publisher">日本私立大学協会</dd>
+        <dd class="ncid">BA51940302</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1976-</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館をめぐる日本の近世あわせて岡山県図書館の歴史と年表および金光図書館史稿本</dt>
+        <dd class="creator">山縣二雄著</dd>
+        <dd class="publisher">山県二雄</dd>
+        <dd class="ncid">BN06600298</dd>
+        <dd class="edition">私家版, 限定[版]</dd>
+        <dd class="publicationDate">[1981.2]</dd>
+        <dd class="note">300部限定</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">進化する図書館へ</dt>
+        <dd class="creator">進化する図書館の会編</dd>
+        <dd class="publisher">ひつじ書房</dd>
+        <dd class="ncid">BA5316249X</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2001.7</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館の政治学</dt>
+        <dd class="creator">東條文規著</dd>
+        <dd class="publisher">青弓社</dd>
+        <dd class="ncid">BA74820638</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2006.1</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書・図書館用語集成</dt>
+        <dd class="creator">渡辺正亥著</dd>
+        <dd class="publisher">近畿大学印刷局</dd>
+        <dd class="ncid">BN01254702</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1983.3-1984.12</dd>
+        <dd class="note">[I]の発売: 池上書店(東京)・隆文社(大阪)</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">視聴覚教育</dt>
+        <dd class="creator">野田一郎編</dd>
+        <dd class="publisher">東京書籍</dd>
+        <dd class="ncid">BN11420681</dd>
+        <dd class="edition">第2版</dd>
+        <dd class="publicationDate">1992.9</dd>
+        <dd class="note">各章末:参考文献</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">世界の図書館</dt>
+        <dd class="creator">徳永康元編</dd>
+        <dd class="publisher">丸善</dd>
+        <dd class="ncid">BN01562737</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1981.10</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">くらしに活きるレファレンス</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">紀伊國屋書店</dd>
+        <dd class="ncid">BN15950304</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">c1996</dd>
+        <dd class="note">企画・監修: 日本図書館協会</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館のしごと : よりよい利用をサポートするために = How library works in Japan : for supporting its better use</dt>
+        <dd class="creator">国際交流基金関西国際センター編著</dd>
+        <dd class="publisher">読書工房</dd>
+        <dd class="ncid">BB12808390</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2013.6</dd>
+        <dd class="note">監修: 川戸理恵子, 小林卓, 中山愛理</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">情報資源の社会制度と経営</dt>
+        <dd class="creator">根本彰編</dd>
+        <dd class="publisher">東京大学出版会</dd>
+        <dd class="ncid">BB12860415</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2013.6</dd>
+        <dd class="note">参考文献: 各章末</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館用語集</dt>
+        <dd class="creator">日本図書館協会用語委員会編</dd>
+        <dd class="publisher">日本図書館協会</dd>
+        <dd class="ncid">BB14012869</dd>
+        <dd class="edition">4訂版</dd>
+        <dd class="publicationDate">2013.10</dd>
+        <dd class="note">欧文タイトルは標題紙裏による</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館情報学用語辞典</dt>
+        <dd class="creator">日本図書館情報学会用語辞典編集委員会編</dd>
+        <dd class="publisher">丸善出版</dd>
+        <dd class="ncid">BB16774224</dd>
+        <dd class="edition">第4版</dd>
+        <dd class="publicationDate">2014.2</dd>
+        <dd class="note">「図書館情報学用語辞典 第4版」(平成25年12月25日第1刷発行)に基づいて制作</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">中世イスラムの図書館と西洋 : 古代の知を回帰させ,文字と書物の帝国を築き西洋を覚醒させた人々</dt>
+        <dd class="creator">原田安啓著</dd>
+        <dd class="publisher">日本図書刊行会</dd>
+        <dd class="ncid">BB18650539</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2015.4</dd>
+        <dd class="note">参考文献: p228-229</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">世界の夢の図書館</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">エクスナレッジ</dd>
+        <dd class="ncid">BB19649954</dd>
+        <dd class="edition">愛蔵ポケット版</dd>
+        <dd class="publicationDate">2015.9</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">メタデータとウェブサービス</dt>
+        <dd class="creator">日本図書館情報学会研究委員会編</dd>
+        <dd class="publisher">勉誠出版</dd>
+        <dd class="ncid">BB22547522</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2016.11</dd>
+        <dd class="note">文献: 各章末</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館長の本棚 : ページの向こうに広がる世界</dt>
+        <dd class="creator">若園義彦著</dd>
+        <dd class="publisher">郵研社</dd>
+        <dd class="ncid">BB22552544</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2016.11</dd>
+        <dd class="note">本の索引: p214-215</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">第42回研究集会の報告より</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">図書館問題研究会</dd>
+        <dd class="ncid">BB22900141</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2016.7</dd>
+        <dd class="note">発売:教育史料出版会</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">台湾総督府図書館</dt>
+        <dd class="creator">春山明哲編・解題</dd>
+        <dd class="publisher">金沢文圃閣</dd>
+        <dd class="ncid">BB23064433</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2017.1</dd>
+        <dd class="note">資料協力: 国立台湾図書館</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館情報学</dt>
+        <dd class="creator">上田修一, 倉田敬子編著</dd>
+        <dd class="publisher">勁草書房</dd>
+        <dd class="ncid">BB23388650</dd>
+        <dd class="edition">第2版</dd>
+        <dd class="publicationDate">2017.3</dd>
+        <dd class="note">引用文献: 各章末</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館と江戸時代の人びと</dt>
+        <dd class="creator">新藤透著</dd>
+        <dd class="publisher">柏書房</dd>
+        <dd class="ncid">BB24207693</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2017.8</dd>
+        <dd class="note">参考文献: 各章末</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">市立公共図書館</dt>
+        <dd class="creator">春山明哲編・解題</dd>
+        <dd class="publisher">金沢文圃閣</dd>
+        <dd class="ncid">BB25566148</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2018.1</dd>
+        <dd class="note">資料協力: 国立台湾図書館</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">類縁機関案内 : 東京・神奈川・千葉・埼玉</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">相模女子大学附属図書館</dd>
+        <dd class="ncid">BN06345339</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1981-</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">スマトラ沖地震・津波による文書遺産の被災と復興支援 : 平成17年度国立国会図書館公開セミナー記録集</dt>
+        <dd class="creator">国立国会図書館関西館事業部図書館協力課</dd>
+        <dd class="publisher">国立国会図書館関西館事業部図書館協力課</dd>
+        <dd class="ncid">BA79341734</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2006.9</dd>
+        <dd class="note">会期・会場: 平成17年12月6日(火) 国立国会図書館東京本館新館講堂</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館文化史研究</dt>
+        <dd class="creator">日本図書館文化史研究会編集</dd>
+        <dd class="publisher">日外アソシエーツ</dd>
+        <dd class="ncid">BA46792181</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1996.12-</dd>
+        <dd class="note">欧文タイトルは第21号表紙裏による</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">「自由宣言」と図書館活動</dt>
+        <dd class="creator">馬場俊明著</dd>
+        <dd class="publisher">青弓社</dd>
+        <dd class="ncid">BN10269755</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1993.12</dd>
+        <dd class="note">付: 参考文献</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">本のある風景</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">紀伊國屋書店</dd>
+        <dd class="ncid">BA44369271</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">c1999</dd>
+        <dd class="note">監修: 日本図書館協会</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">北海道図書館大会記録</dt>
+        <dd class="creator">北海道図書館振興協議会編</dd>
+        <dd class="publisher">北海道図書館振興協議会</dd>
+        <dd class="ncid">BN06655562</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">19--</dd>
+        <dd class="note">第23回の副標題: 図書館法施行30周年記念</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">NTIS研究レポートリスト(マイクロフィッシュ)</dt>
+        <dd class="creator">図書館情報大学附属図書館編</dd>
+        <dd class="publisher">図書館情報大学附属図書館</dd>
+        <dd class="ncid">BN02007345</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1982.3</dd>
+        <dd class="note">昭和55年度全国共同利用外国図書購入費 (大型コレクション) の配分による購入図書のリスト</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">資料組織演習</dt>
+        <dd class="creator">岩淵泰郎編著</dd>
+        <dd class="publisher">東京書籍</dd>
+        <dd class="ncid">BA3496185X</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1998.2</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">インタラクティヴ・マインド : 近代図書館からコンピュータ・ネットワークへ</dt>
+        <dd class="creator">桂英史著</dd>
+        <dd class="publisher">NTT出版</dd>
+        <dd class="ncid">BA60024769</dd>
+        <dd class="edition">新版</dd>
+        <dd class="publicationDate">2002.11</dd>
+        <dd class="note">初版: 岩波書店 1995年刊</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">沖縄の図書館</dt>
+        <dd class="creator">沖縄県立図書館編集</dd>
+        <dd class="publisher">沖縄県立図書館</dd>
+        <dd class="ncid">BA52425141</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2000.10</dd>
+        <dd class="note">沖縄(琉球)の図書館史年表 / 吉川安一編: p11〜18</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">東京都の図書館</dt>
+        <dd class="creator">馬場萬夫, 飯澤文夫, 古川絹子著</dd>
+        <dd class="publisher">三一書房</dd>
+        <dd class="ncid">BA33254041</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1997.11</dd>
+        <dd class="note">参考文献: p315-317</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">土井六郎図書館学論文集</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">〔土井六郎〕</dd>
+        <dd class="ncid">BN0433296X</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1985.3</dd>
+        <dd class="note">定年退職記念</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">個人でつくる電子図書館 : 満開佐倉文庫の試み</dt>
+        <dd class="creator">内田儀久著</dd>
+        <dd class="publisher">中央公論事業出版 (制作・発売)</dd>
+        <dd class="ncid">BB05691657</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2011.4</dd>
+        <dd class="note">参考文献: p204-207</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">北陸の図書館における特設文庫一覧 : 平成元年9月現在</dt>
+        <dd class="creator">富山県図書館協会</dd>
+        <dd class="publisher">富山県図書館協会</dd>
+        <dd class="ncid">BN06194142</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1990.2</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">沖縄の図書館と図書館人</dt>
+        <dd class="creator">山田勉著 ; 沖縄図書館史研究会編</dd>
+        <dd class="publisher">沖縄図書館史研究会</dd>
+        <dd class="ncid">BN06562563</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1990.7</dd>
+        <dd class="note">山田勉略年譜・著作目録:p269〜276</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">秋岡梧郎著作集 : 図書館理念と実践の軌跡</dt>
+        <dd class="creator">秋岡梧郎著 ; 秋岡梧郎著作集刊行会編</dd>
+        <dd class="publisher">日本図書館協会</dd>
+        <dd class="ncid">BN03379775</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1988.11</dd>
+        <dd class="note">付: 秋岡日誌</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館の変革</dt>
+        <dd class="creator">前川恒雄著</dd>
+        <dd class="publisher">出版ニュース社</dd>
+        <dd class="ncid">BA40985590</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1999.4</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館学演習資料</dt>
+        <dd class="creator">全国学校図書館協議会演習資料編集委員会編</dd>
+        <dd class="publisher">全国学校図書館協議会</dd>
+        <dd class="ncid">BN02988563</dd>
+        <dd class="edition">新訂8版</dd>
+        <dd class="publicationDate">1988.4</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館と電子書籍</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">ポット出版</dd>
+        <dd class="ncid">BB04568633</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2011.1</dd>
+        <dd class="note">タイトルは背による</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">情報システム論</dt>
+        <dd class="creator">津田良成編</dd>
+        <dd class="publisher">雄山閣出版</dd>
+        <dd class="ncid">BN00466308</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1983.10</dd>
+        <dd class="note">監修: 酒井悌</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館愛書家の楽園</dt>
+        <dd class="creator">アルベルト・マングェル [著] ; 野中邦子訳</dd>
+        <dd class="publisher">白水社</dd>
+        <dd class="ncid">BA87285606</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2008.10</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">新聞集成図書館</dt>
+        <dd class="creator">石井敦監修</dd>
+        <dd class="publisher">大空社</dd>
+        <dd class="ncid">BN08027312</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1992.9-10</dd>
+        <dd class="note">第1巻: 明治編. 上</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館学大綱</dt>
+        <dd class="creator">和田万吉著 ; 弥吉光長編・解説</dd>
+        <dd class="publisher">日本図書館協会</dd>
+        <dd class="ncid">BN00105467</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1984</dd>
+        <dd class="note">著者の肖像あり</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">課題解決型サービス</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">紀伊國屋書店</dd>
+        <dd class="ncid">BB01316248</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">c2009</dd>
+        <dd class="note">企画・監修: 日本図書館協会</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">情報資源組織論</dt>
+        <dd class="creator">榎本裕希子, 石井大輔, 名城邦孝著</dd>
+        <dd class="publisher">学文社</dd>
+        <dd class="ncid">BB08828317</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2012.3</dd>
+        <dd class="note">参考文献: 各章末</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">民主主義と図書館</dt>
+        <dd class="creator">シドニー・ディツィオン著 ; 川崎良孝, 高島涼子, 森耕一共訳</dd>
+        <dd class="publisher">日本図書館研究会</dd>
+        <dd class="ncid">BN10559074</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1994.2</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館通論</dt>
+        <dd class="creator">清水正三, 河井弘志編</dd>
+        <dd class="publisher">教育史料出版会</dd>
+        <dd class="ncid">BN12192709</dd>
+        <dd class="edition">第3版</dd>
+        <dd class="publicationDate">1994.4</dd>
+        <dd class="note">参考文献: p193-196</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">アメリカ図書館史に女性を書きこむ</dt>
+        <dd class="creator">スザンヌ・ヒルデンブランド編著 ; 田口瑛子訳</dd>
+        <dd class="publisher">京都大学図書館情報学研究会</dd>
+        <dd class="ncid">BA58019777</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2002.7</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">コミュニケーション : 図書および図書館の歴史</dt>
+        <dd class="creator">エルマ D. ジョンソン著 ; 椎名六郎, 椎名芙美枝共訳</dd>
+        <dd class="publisher">学芸図書</dd>
+        <dd class="ncid">BN0187430X</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1969.6</dd>
+        <dd class="note">参考文献: p272-282</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">情報図書館学用語辞典</dt>
+        <dd class="creator">田辺広編</dd>
+        <dd class="publisher">雄松堂出版</dd>
+        <dd class="ncid">BN00570230</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1984.2</dd>
+        <dd class="note">協力: 金子豊, 堀込静香</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">ロシア語図書館関係用語集</dt>
+        <dd class="creator">佐野幸平編</dd>
+        <dd class="publisher">宮城県大学図書館協会</dd>
+        <dd class="ncid">BA3656565X</dd>
+        <dd class="edition">第2版</dd>
+        <dd class="publicationDate">1998.4</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館読本</dt>
+        <dd class="creator">本の雑誌編集部編</dd>
+        <dd class="publisher">本の雑誌社</dd>
+        <dd class="ncid">BA45226382</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2000.1</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館概論</dt>
+        <dd class="creator">塩見昇編著</dd>
+        <dd class="publisher">日本図書館協会</dd>
+        <dd class="ncid">BA46386511</dd>
+        <dd class="edition">新訂版</dd>
+        <dd class="publicationDate">2000.3</dd>
+        <dd class="note">参考文献: p275-277</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">日本図書館協会六十年略譜 : 1892-1951:明治25年-昭和26年</dt>
+        <dd class="creator">日本図書館協会六十周年記念出版委員会編</dd>
+        <dd class="publisher">日本図書館協会</dd>
+        <dd class="ncid">BN01879405</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1951</dd>
+        <dd class="note"></dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館の誕生 : 古代オリエントからローマへ</dt>
+        <dd class="creator">L. カッソン著 ; 新海邦治訳</dd>
+        <dd class="publisher">刀水書房</dd>
+        <dd class="ncid">BA81565235</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2007.4</dd>
+        <dd class="note">参考文献: p212-215</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">岡田健蔵の函館図書館</dt>
+        <dd class="creator"></dd>
+        <dd class="publisher">ポット出版</dd>
+        <dd class="ncid">BA83716910</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2007.11</dd>
+        <dd class="note">タイトルは背による</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">新図書館資料論</dt>
+        <dd class="creator">河井弘志編著</dd>
+        <dd class="publisher">東京書籍</dd>
+        <dd class="ncid">BN09640674</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1993.8</dd>
+        <dd class="note">引用文献・参考文献: 各章末</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">最新図書館学事典</dt>
+        <dd class="creator">草野正名編著</dd>
+        <dd class="publisher">学芸図書</dd>
+        <dd class="ncid">BN01254848</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1984.5</dd>
+        <dd class="note">付録:図書館関係法現抄および資料:p221-243</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">図書館が面白い</dt>
+        <dd class="creator">紀田順一郎著</dd>
+        <dd class="publisher">筑摩書房</dd>
+        <dd class="ncid">BN10719228</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">1994.2</dd>
+        <dd class="note">「図書館活用百科」(新潮社 1981年刊)の改題改訂</dd>
+      </dl>
+      </li>
+      <li>
+      <dl>
+        <dt class="title">新大学日语简明教程 : 教学参考书</dt>
+        <dd class="creator">王诗荣, 林璋主编</dd>
+        <dd class="publisher">高等教育出版社</dd>
+        <dd class="ncid">BA87740735</dd>
+        <dd class="edition"></dd>
+        <dd class="publicationDate">2007</dd>
+        <dd class="note">"普通高等教育“十一五国家级规划教材</dd>
+      </dl>
+      </li>
+    </ul>
+  </div>
+<!-- list.js スクリプトの記述 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+<script>
+  // List.jsの動作パラメータ設定
+  let options = {
+    // 絞り込み対象とするclass を指定
+    valueNames: ['title', 'creator', 'publisher', 'edition', 'note'],
+    // ページネーション指定 pageはページごとの表示件数
+    page: 10,
+    pagination: true
+  };
+  // list.jsの対象とする<div>のidを指定
+  let listObj = new List('listdata', options);
+  // ios対応のため、inputイベントで動作させる
+  $('#keyword').on('input', function() {
+    let searchString = $(this).val();
+    listObj.search(searchString);
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</body>
+</html>
