@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="">
-   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-   <meta name="generator" content="Hugo 0.79.0"><link rel="icon" href="favicon.ico">
+  <head> <link rel="icon" href="favicon.ico">
     <meta charset="utf-8">
     <title>IT総合研修大学図書館</title>
   </head>
@@ -36,7 +31,19 @@
      <td> <mark>休館</mark>  </td>
   </tr>
 </table>
+<div class="wrapper">
+    <!-- 2021年10月を表示 -->
+    <h4 id="header"></h4>
 
+    <!-- ボタンクリックで月移動 -->
+    <div id="next-prev-button">
+        <button id="prev" onclick="prev()">‹</button>
+        <button id="next" onclick="next()">›</button>
+    </div>
+
+    <!-- カレンダー -->
+    <div id="calendar"></div>
+</div>
 
       <h3>（２）アクセスマップ</h3>
     　　　<img src="library_access_map.png" width="400"><br>
