@@ -33,7 +33,13 @@
      <td> <mark>休館</mark>  </td>
   </tr>
 </table>
-<div class="container-calendar">
+<p>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#calendar" aria-expanded="false" aria-controls="kaikan-calendar">
+  開館カレンダーを見る
+  </button>
+</p>
+<div class="collapse" id="kaikan-calendar">
+　<div class="container-calendar">
           <h4 id="monthAndYear"></h4>
           <div class="button-container-calendar">
               <button id="previous" onclick="previous()">‹</button>
@@ -63,6 +69,7 @@
               </select>
               <select id="year" onchange="jump()"></select>
           </div>
+      </div>
     </div>
 
     <script src="js/calendar.js" type="text/javascript"></script>
